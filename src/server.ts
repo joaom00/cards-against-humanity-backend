@@ -16,7 +16,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'https://cards-against-humanity-nu.vercel.app/',
+    origin: 'https://cards-against-humanity-nu.vercel.app',
     methods: ['GET', 'POST'],
   },
 });
