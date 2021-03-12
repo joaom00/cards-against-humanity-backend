@@ -1,5 +1,5 @@
-import whiteCards from '../cards/white';
-import blackCards from '../cards/black';
+import whiteCards from './cards/white';
+import blackCards from './cards/black';
 
 interface Deck {
   room: string;
