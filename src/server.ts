@@ -16,6 +16,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
+    // origin: 'http://localhost:3000',
     origin: 'https://cards-against-humanity-nu.vercel.app',
     methods: ['GET', 'POST'],
   },
@@ -23,8 +24,9 @@ const io = new Server(server, {
 
 app.use(cors());
 
-io.on('connection', (socket) => {
-  console.log('new user connected');
+io.on('connection', async (socket) => {
+  const allSockets = await io.allSockets();
+  io.emit('socketsConnected', allSockets.size);
 
   socket.on('joinRoom', ({ name, room }) => {
     addUser(socket.id, name, room);
